@@ -1,0 +1,12 @@
+.menu{
+
+}
+#start{
+    width: 150px;
+    height: 80px;
+    background-color: #F7DC6F;
+    border-radius: 10%;
+    color: black;
+    
+    border: none;
+}

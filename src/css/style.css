@@ -1,0 +1,84 @@
+html,body{
+    background-color: rgb(110, 108, 149);
+}
+#Area{
+    display: flex;
+    justify-content: center;
+}
+#gameArea{
+    border: solid black;
+}
+#contener-btn{
+    display: flex;
+    justify-content: center;
+}
+.key{
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    border: solid black;
+    margin: 15px;
+}
+#a{
+    background: #108fe8;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #0d72b8 inset, 0 5px 5px rgba(3, 25, 41, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.keypressed{
+    background: #333;
+    box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+}
+
+#z{
+    background: #e53030;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #c91919 inset, 0 5px 5px rgba(65, 8, 8, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+#e{
+    background: #9B2BFF;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #9B2BFF inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+#r{
+    background: #0ec518;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #0b9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+#t{
+    background: #FFAF0E;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #FFAF0E inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#y{
+    background: #ffe134;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #ffd501 inset, 0 5px 5px rgba(103, 73, 0, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#score{
+    display: flex;
+    text-align: center;
+    background-color: #333;
+    height: 100px;
+    width: 190px;
+}
