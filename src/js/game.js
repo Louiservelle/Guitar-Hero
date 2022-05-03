@@ -2,7 +2,7 @@ let GameArea = document.getElementById("gameArea");
 let ctx = GameArea.getContext("2d");
 
 GameArea.width = 600;
-GameArea.height = 690;
+GameArea.height = 590;
 
 //ZoneInteraction
 ctx.beginPath();
@@ -65,11 +65,6 @@ class Circle {
     ctx.fill();
     ctx.stroke();
   }
-  delete(i) {
-    if (ArrayEntityCircle[i].y > 704) {
-      ArrayEntityCircle.splice(i, i);
-    }
-  }
 }
 
 let colors = ["blue", "red", "purple", "green", "orange", "yellow"];
@@ -86,7 +81,7 @@ let slow = 0;
 let score = 0;
 let tabscore = document.getElementById("score");
 let text = document.createElement("h1");
-
+let del = []
 //console.log(ArrayEntityCircle[0].x,ArrayEntityCircle.nbcolor,ArrayEntityCircle.y)
 
 const init = () => {
@@ -99,7 +94,6 @@ const gameLoop = () => {
   ctx.clearRect(0, 0, GameArea.width, GameArea.height);
   cercle.area();
   ArrayEntityCircle.x = ArrayEntityCircle.x + 10;
-  //console.log(ArrayEntityCircle.length)
 
   for (let i = 0; i < ArrayEntityCircle.length; i++) {
     ctx.beginPath();
@@ -114,17 +108,25 @@ const gameLoop = () => {
     ctx.fillStyle = colors[ArrayEntityCircle[i].nbcolor];
     ctx.fill();
     ctx.stroke();
-    //cercle.delete(i)
-    eventKey(i);
   }
+
   slow += 1;
-  if (slow == 120) {
+  if (slow == 20) {
+    for(let i=0;i<ArrayEntityCircle.length;i++){
+      eventKey(i);
+      if (ArrayEntityCircle[i].y>710){
+        del.push(i)
+      }
+    }
+    for (let i=0;i<del.length;i++){
+      deleteEntityCircle(ArrayEntityCircle, del[i])
+    }
+    del = []
     test = cercle.createCircle2();
     ArrayEntityCircle.push(test);
     slow = 0;
   }
   ctx.fillStyle = "black";
-
   window.requestAnimationFrame(gameLoop);
 };
 let A = document.getElementById('a')
@@ -134,14 +136,23 @@ let R = document.getElementById('r')
 let T = document.getElementById('t')
 let Y = document.getElementById('y')
 
+
+
+function deleteEntityCircle(Array, i) {
+  if (ArrayEntityCircle[i].y > 704) {
+    ArrayEntityCircle.splice(i, i);
+  }
+}
+
 const eventKey = (i) => {
-  window.addEventListener("keydown", (keyevents) => {
+  window.addEventListener("keyup", (keyevents) => {
     if (
       keyevents.key === "a" &&
       ArrayEntityCircle[i].y > 600 &&
       ArrayEntityCircle[i].y < 700 &&
       ArrayEntityCircle[i].nbcolor === 0
     ) {
+      ArrayEntityCircle[i].isTouchable = true
       text.innerHTML = score;
       tabscore.appendChild(text);
       score += 1;

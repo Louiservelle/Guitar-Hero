@@ -75,10 +75,4 @@ html,body{
     display: inline-block;
 }
 
-#score{
-    display: flex;
-    text-align: center;
-    background-color: #333;
-    height: 100px;
-    width: 190px;
-}
+
