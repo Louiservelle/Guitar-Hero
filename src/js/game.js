@@ -40,15 +40,6 @@ class Circle {
     ctx.lineTo(600, 610);
     ctx.stroke();
   }
-  createCircle() {
-    this.getRandomColors();
-    //ctx.clearRect(this.x, this.y, 60, 60);
-    ctx.beginPath();
-    ctx.arc(this.x + 100 * this.colorRandom, this.y, 25, 0, 2 * Math.PI);
-    ctx.fillStyle = this.colors[this.colorRandom];
-    ctx.fill();
-    ctx.stroke();
-  }
   createCircle2() {
     this.getRandomColors();
     let entityCircle = {
@@ -68,9 +59,8 @@ class Circle {
   DrawCircle(ArrayEntityCircle){
     for (let i = 0; i < ArrayEntityCircle.length; i++) {
       ctx.beginPath();
-      if (ArrayEntityCircle[i].y<650){
         ArrayEntityCircle[i].y += (movingSpeed * secondsPassed)/2;
-      }
+
       ctx.arc(
           ArrayEntityCircle[i].x + 100 * ArrayEntityCircle[i].nbcolor,
           ArrayEntityCircle[i].y,
@@ -84,6 +74,11 @@ class Circle {
     }
   }
 }
+
+
+
+
+
 
 let colors = ["blue", "red", "purple", "green", "orange", "yellow"];
 let cercle = new Circle(50, 50);
@@ -109,11 +104,20 @@ const init = () => {
 
 window.onload = init;
 
+
+
+
+
+
+
+
+
+
+
 const gameLoop = (timeStamp) => {
   // Calculate the number of seconds passed since the last frame
   secondsPassed = (timeStamp - oldTimeStamp) / 1000;
   oldTimeStamp = timeStamp;
-
   // Calculate fps
   fps = Math.round(1 / secondsPassed);
   ctx.clearRect(0, 0, GameArea.width, GameArea.height);
@@ -122,18 +126,25 @@ const gameLoop = (timeStamp) => {
   //console.log(ArrayEntityCircle.length)
   cercle.DrawCircle(ArrayEntityCircle)
   slow += 1;
-  if (slow == 100) {
+  if (slow == 20) {
+    console.log(timeStamp/1000)
     console.log(ArrayEntityCircle)
     for(let i=0;i<ArrayEntityCircle.length;i++){
-      if (ArrayEntityCircle[i].y>740){
-        del.push(i)
+     if (ArrayEntityCircle[i].y>740){
+       ArrayEntityCircle.shift()
       }
       eventKey(i);
     }
+    /*if (del.length > 15){
+      for (let i=0;i<del.length;i++){
+        deleteEntityCircle(ArrayEntityCircle, del[i])
+      }
+    }
     for (let i=0;i<del.length;i++){
-      deleteEntityCircle(ArrayEntityCircle, del[i])
+      deleteEntityCircle.shift()
     }
     del = []
+     */
     test = cercle.createCircle2();
     ArrayEntityCircle.push(test);
     slow = 0;
@@ -154,74 +165,119 @@ function deleteEntityCircle(Array, i) {
     ArrayEntityCircle.splice(i, i);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const eventKey = (i) => {
   window.addEventListener("keyup", (keyevents) => {
-    if (
-      keyevents.key === "a" &&
-      ArrayEntityCircle[i].y > 610 &&
-      ArrayEntityCircle[i].y < 730 &&
-      ArrayEntityCircle[i].nbcolor === 0
-    ) {
-      ArrayEntityCircle[i].isTouchable = true
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1;
-      ArrayEntityCircle[i].y += 120;
-    }
-    if (
-      keyevents.key === "z" &&
-      ArrayEntityCircle[i].y > 640 &&
-      ArrayEntityCircle[i].y < 720 &&
-      ArrayEntityCircle[i].nbcolor === 1
-    ) {
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1;
-      ArrayEntityCircle[i].y += 120;
-    }
-    if (
-      keyevents.key === "e" &&
-      ArrayEntityCircle[i].y > 610 &&
-      ArrayEntityCircle[i].y < 730 &&
-      ArrayEntityCircle[i].nbcolor === 2
-    ) {
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1
-      ArrayEntityCircle[i].y += 120;
-    }
-    if (
-      keyevents.key === "r" &&
-      ArrayEntityCircle[i].y > 610 &&
-      ArrayEntityCircle[i].y < 730 &&
-      ArrayEntityCircle[i].nbcolor === 3
-    ) {
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1;
-      ArrayEntityCircle[i].y += 120;
-    }
-    if (
-      keyevents.key === "t" &&
-      ArrayEntityCircle[i].y > 610 &&
-      ArrayEntityCircle[i].y < 730 &&
-      ArrayEntityCircle[i].nbcolor === 4
-    ) {
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1;
-      ArrayEntityCircle[i].y += 120;
-    }
-    if (
-      keyevents.key === "y" &&
-      ArrayEntityCircle[i].y > 610 &&
-      ArrayEntityCircle[i].y < 730 &&
-      ArrayEntityCircle[i].nbcolor === 5
-    ) {
-      text.innerHTML = score;
-      tabscore.appendChild(text);
-      score += 1;
-      ArrayEntityCircle[i].y += 120;
+    switch (keyevents.key) {
+      case 'a':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 0){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      case 'z':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 1){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      case 'e':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 2){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      case 'r':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 3){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      case 't':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 4){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      case 'y':
+        if (ArrayEntityCircle[i].y > 610 && ArrayEntityCircle[i].y < 730 && ArrayEntityCircle[i].nbcolor == 5){
+          ArrayEntityCircle[i].isTouchable = true
+          text.innerHTML = score;
+          tabscore.appendChild(text);
+          score += 1;
+          ArrayEntityCircle[i].y += 120;
+        }
+        break;
+      default:
+        console.log(`aucune touche`);
     }
   });
 };
+
+
+const niveau1 = (i) => {
+  // Calculate the number of seconds passed since the last frame
+  secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+  oldTimeStamp = timeStamp;
+  // Calculate fps
+  fps = Math.round(1 / secondsPassed);
+  ctx.clearRect(0, 0, GameArea.width, GameArea.height);
+  cercle.area();
+  ArrayEntityCircle.x = ArrayEntityCircle.x + 10;
+  //console.log(ArrayEntityCircle.length)
+  cercle.DrawCircle(ArrayEntityCircle)
+  slow += 1;
+  if (slow == 20) {
+    console.log(timeStamp/1000)
+    console.log(ArrayEntityCircle)
+    for(let i=0;i<ArrayEntityCircle.length;i++){
+      if (ArrayEntityCircle[i].y>740){
+        ArrayEntityCircle.shift()
+      }
+      eventKey(i);
+    }
+    /*if (del.length > 15){
+      for (let i=0;i<del.length;i++){
+        deleteEntityCircle(ArrayEntityCircle, del[i])
+      }
+    }
+    for (let i=0;i<del.length;i++){
+      deleteEntityCircle.shift()
+    }
+    del = []
+     */
+    test = cercle.createCircle2();
+    ArrayEntityCircle.push(test);
+    slow = 0;
+  }
+  ctx.fillStyle = "black";
+  window.requestAnimationFrame(gameLoop);
+}
