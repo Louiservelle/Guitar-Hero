@@ -56,6 +56,20 @@ class Circle {
     ctx.fill();
     ctx.stroke();
   }
+  musique(){
+    let g = this.getRandomInt(3)
+    audio.src = musique[g]
+    if(g==0){
+      survivaltimer = 137;
+    }
+    if(g==2){
+      survivaltimer = 180
+    }
+    if(g==1){
+      survivaltimer = 290
+    }
+  }
+
   DrawCircle(ArrayEntityCircle,slow,mouveCircle){
     let i = 0
 
@@ -86,6 +100,7 @@ class Circle {
 }
 let fail = 0
 let colors = ["blue", "red", "purple", "green", "orange", "yellow"];
+let musique = ["./src/musique/banger.mp3","./src/musique/pnl.mp3","./src/musique/kiffness.mp3"];
 let cercle = new Circle(50, 50);
 let test = cercle.createCircle2();
 let ArrayEntityCircle = [];
@@ -101,6 +116,8 @@ let game = true
 let erreur = document.getElementById("erreur")
 let vie = 10
 let audio  = document.getElementById("audio")
+let survivaltimer = 100
+cercle.musique(survivaltimer)
 const init = () => {
   window.requestAnimationFrame(gameLoop);
 };
@@ -114,7 +131,7 @@ const gameLoop = (timeStamp) => {
   if (game){
     audio.play()
     secondsPassed = timeStamp/1000
-    if (secondsPassed>60 || fail == 10){
+    if (secondsPassed>survivaltimer || fail == 10){
       ArrayEntityCircle = []
       cercle.DrawCircle(ArrayEntityCircle,slow,mouveCircle)
       audio.pause()
@@ -128,14 +145,13 @@ const gameLoop = (timeStamp) => {
     if (slowSpownCircle > 35){
       slowSpownCircle = 100 - (secondsPassed* 0.02)
     }
-    console.log(slowSpownCircle)
     if (slow > slowSpownCircle) {
       test = cercle.createCircle2();
       ArrayEntityCircle.push(test);
       slow = 0;
       mouveCircle = niveau1(secondsPassed)
     }
-    timer.textContent = 60 - Math.round(secondsPassed)
+    timer.textContent = survivaltimer - Math.round(secondsPassed)
     erreur.textContent = vie - fail
     ctx.fillStyle = "black";
     window.requestAnimationFrame(gameLoop);
