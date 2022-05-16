@@ -1,5 +1,7 @@
 html,body{
-    background-color: rgb(110, 108, 149);
+    background-image: url("https://images2.alphacoders.com/106/1065604.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #Area{
     display: flex;
@@ -81,4 +83,29 @@ html,body{
     background-color: #333;
     height: 100px;
     width: 190px;
+}
+
+#timer{
+    color: #2e8df0;
+    font-family: avenir, sans-serif;
+    padding: 0;
+    text-align: center;
+    font-size: 4em;
+    background-color: rgb(110, 108, 149);
+    width: 136px;
+    height: 78px;
+}
+.default{
+    display: flex;
+    justify-content: flex-end;
+}
+.default h1{
+    font-family: avenir, sans-serif;
+}
+.test{
+    display:flex;
+    justify-content: space-between;
+}
+#audio{
+    display: none;
 }
