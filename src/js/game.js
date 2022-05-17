@@ -1,5 +1,61 @@
+let facile = document.getElementById("facile")
+let moyen = document.getElementById("moyen")
+let hardcore = document.getElementById("hardcore")
+let global = document.getElementById("global")
+let menu = document.getElementById("menu")
+console.log(facile)
+let game = false
+
+global.style.visibility = "hidden"
+
+const init = () => {
+  window.requestAnimationFrame(gameLoop);
+};
+facile.onclick = init;
+moyen.onclick = init;
+hardcore.onclick = init;
+facile.addEventListener("click",() => {
+  menu.style.display = "none"
+  global.style.visibility = "visible"
+  survivaltimer = 137;
+  audio.src = musique[0]
+  game = true
+})
+moyen.addEventListener("click",() => {
+  menu.style.display = "none"
+  global.style.visibility = "visible"
+  survivaltimer = 200;
+  audio.src = musique[2]
+  game = true
+})
+hardcore.addEventListener("click",() => {
+  menu.style.display = "none"
+  global.style.visibility = "visible"
+  survivaltimer = 280;
+  audio.src = musique[1]
+  game = true
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let GameArea = document.getElementById("gameArea");
 let ctx = GameArea.getContext("2d");
+
+
 
 GameArea.width = 600;
 GameArea.height = 690;
@@ -90,7 +146,7 @@ class Circle {
       if (slow == 10) {
         if (ArrayEntityCircle[i].y > 800) {
           fail += 1
-          console.log(fail)
+          //console.log(fail)
           ArrayEntityCircle.shift()
         }
       }
@@ -112,17 +168,14 @@ let score = 0;
 let tabscore = document.getElementById("score");
 let text = document.createElement("h1");
 let mouveCircle = 0
-let game = true
 let erreur = document.getElementById("erreur")
 let vie = 10
 let audio  = document.getElementById("audio")
 let survivaltimer = 100
-cercle.musique(survivaltimer)
-const init = () => {
-  window.requestAnimationFrame(gameLoop);
-};
 
-window.onload = init;
+
+
+
 
 
 
@@ -131,6 +184,7 @@ const gameLoop = (timeStamp) => {
   if (game){
     audio.play()
     secondsPassed = timeStamp/1000
+    console.log(secondsPassed)
     if (secondsPassed>survivaltimer || fail == 10){
       ArrayEntityCircle = []
       cercle.DrawCircle(ArrayEntityCircle,slow,mouveCircle)
@@ -163,6 +217,7 @@ let E = document.getElementById('e')
 let R = document.getElementById('r')
 let T = document.getElementById('t')
 let Y = document.getElementById('y')
+
 
 
 

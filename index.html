@@ -6,32 +6,39 @@
     <title>Rythm Fenzy</title>
 </head>
 <body>
-    <audio id="audio" controls src=""></audio>
-    <div class = "test">
-        <div id="score">
-            <h1>SCORE : </h1>
-        </div>
-
-        <div class = "default">
-            <div>
-                <h1>Temps: </h1>
+    <div id="menu">
+        <button id = "facile">Facile</button>
+        <button id = "moyen">Moyen</button>
+        <button id = "hardcore">Hardore</button>
+    </div>
+    <div id="global">
+        <audio id="audio" controls src=""></audio>
+        <div class = "test">
+            <div id="score">
+                <h1>SCORE : </h1>
             </div>
-            <div id = "timer" ></div>
-        </div>
-    </div>
 
-    <div id="Area">
-        <canvas id="gameArea"></canvas>
-    </div>        
-    <div id="contener-btn">
-        <button id='a'class="key">A</button>
-        <button id='z'class="key">Z</button>
-        <button id='e'class="key">E</button>
-        <button id='r'class="key">R</button>
-        <button id='t'class="key">T</button>
-        <button id='y'class="key">Y</button>
+            <div class = "default">
+                <div>
+                    <h1>Temps: </h1>
+                </div>
+                <div id = "timer" ></div>
+            </div>
+        </div>
+
+        <div id="Area">
+            <canvas id="gameArea"></canvas>
+        </div>
+        <div id="contener-btn">
+            <button id='a'class="key">A</button>
+            <button id='z'class="key">Z</button>
+            <button id='e'class="key">E</button>
+            <button id='r'class="key">R</button>
+            <button id='t'class="key">T</button>
+            <button id='y'class="key">Y</button>
+        </div>
+        <div id = "erreur" ></div>
+        <script src="src/js/game.js"></script>
     </div>
-    <div id = "erreur" ></div>
-    <script src="src/js/game.js"></script>
 </body>
 </html>
