@@ -109,3 +109,101 @@ html,body{
 #audio{
     display: none;
 }
+#center-menu{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+#title{
+    font-size: 70px;
+    color: #FDFEFE;
+}
+#menu{
+    display: flex;
+    justify-content: space-around
+}
+#facile{
+    background-color: #333;
+    color: #0d72b8;
+    font-size: 20px;
+    width: 160px;
+    height: 70px;
+    border: none;
+    border-radius: 5%;
+    border: 1px solid #0FE3E3;
+    box-shadow: 5px 5px 5px #1a1a1a;
+}
+
+#moyen{
+    background-color: #333;
+    color: #0d72b8;
+    width: 160px;
+    height: 70px;
+    border: none;
+    border-radius: 5%;
+    border: 1px solid #0FE3E3;
+    font-size: 20px;
+    box-shadow: 5px 5px 5px #1a1a1a;
+}
+
+#hardcore{
+    background-color: #333;
+    color: #0d72b8;
+    font-size: 20px;
+    width: 160px;
+    height: 70px;
+    border: 1px solid #0FE3E3;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px #1a1a1a;
+}
+
+#facile:hover{
+    background-color: #14639b;
+    color: #333;
+}
+
+#hardcore:hover{
+    background-color: #14639b;
+    color: #333;
+}
+
+#moyen:hover{
+    background-color: #14639b;
+    color: #333;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

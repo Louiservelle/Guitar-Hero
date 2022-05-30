@@ -3,9 +3,15 @@ let moyen = document.getElementById("moyen")
 let hardcore = document.getElementById("hardcore")
 let global = document.getElementById("global")
 let menu = document.getElementById("menu")
+let start = document.getElementById("start")
+let modal= document.getElementById("myModal")
+let span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+  modal.style.display = "none";
+  location.reload();
+}
 console.log(facile)
 let game = false
-
 global.style.visibility = "hidden"
 
 const init = () => {
@@ -14,28 +20,29 @@ const init = () => {
 facile.onclick = init;
 moyen.onclick = init;
 hardcore.onclick = init;
+start.onclick = init;
 facile.addEventListener("click",() => {
   menu.style.display = "none"
   global.style.visibility = "visible"
   survivaltimer = 137;
   audio.src = musique[0]
-  game = true
 })
 moyen.addEventListener("click",() => {
   menu.style.display = "none"
   global.style.visibility = "visible"
   survivaltimer = 200;
   audio.src = musique[2]
-  game = true
 })
 hardcore.addEventListener("click",() => {
   menu.style.display = "none"
   global.style.visibility = "visible"
   survivaltimer = 280;
   audio.src = musique[1]
-  game = true
 })
-
+start.addEventListener("click",() => {
+  game = true
+  start.style.display = "none"
+})
 
 
 
@@ -185,11 +192,12 @@ const gameLoop = (timeStamp) => {
     audio.play()
     secondsPassed = timeStamp/1000
     console.log(secondsPassed)
-    if (secondsPassed>survivaltimer || fail == 10){
+    if (secondsPassed>survivaltimer || fail == 1){
       ArrayEntityCircle = []
       cercle.DrawCircle(ArrayEntityCircle,slow,mouveCircle)
       audio.pause()
       game = false
+      modal.style.display = "block";
     }
     ctx.clearRect(0, 0, GameArea.width, GameArea.height);
     cercle.area();
@@ -197,7 +205,7 @@ const gameLoop = (timeStamp) => {
     cercle.DrawCircle(ArrayEntityCircle,slow,mouveCircle)
     slow += 1;
     if (slowSpownCircle > 35){
-      slowSpownCircle = 100 - (secondsPassed* 0.02)
+      slowSpownCircle = 100 - (secondsPassed* 0.25)
     }
     if (slow > slowSpownCircle) {
       test = cercle.createCircle2();
@@ -302,5 +310,5 @@ const eventKey = (i) => {
 
 
 const niveau1 = (secondsPassed) => {
-    return secondsPassed * 0.08
+    return secondsPassed * 0.02
 }
